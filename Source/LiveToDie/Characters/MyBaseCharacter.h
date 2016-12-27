@@ -3,7 +3,10 @@
 #pragma once
 
 #include "PaperCharacter.h"
+#include "PaperFlipbookComponent.h" // Must have if using UPaperFlipbook*
 #include "MyBaseCharacter.generated.h"
+
+
 
 /**
  * 
@@ -25,12 +28,26 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	// Set Character Movement Speed.
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
-	float MovementSpeed = 0.25;
+	
 
 private:
 	void MoveForward(float value);
+
+	// Character Name
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes", meta = (AllowPrivateAccess = "true"))
+	//Defines character name in conversations etc
+	FName CharacterName = "DefaultName";
+
+	// Set Character Movement Speed.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes", meta = (AllowPrivateAccess = "true"))
+	float MovementSpeed = 0.25;
+
+	// Character Sprite
+	// Set Character Flipbook Aka Sprite
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes", meta = (AllowPrivateAccess = "true"))
+	UPaperFlipbook* FlipBookToUse;
+
+
 	
 	
 };
